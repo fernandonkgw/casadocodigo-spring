@@ -1,0 +1,10 @@
+# Eclipse core
+.project
+
+# Eclipse Java Development Tools
+.classpath
+.settings/
+
+target/
+
+*.class
