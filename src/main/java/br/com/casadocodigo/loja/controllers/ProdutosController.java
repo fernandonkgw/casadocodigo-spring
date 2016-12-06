@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,5 +70,14 @@ public class ProdutosController {
 		model.addAttribute("produtos", produtos);
 
 		return "produtos/lista";
+	}
+	
+	@RequestMapping("detalhe/{id}")
+	public String detalhe(@PathVariable("id") int id, Model model) {
+		
+		Produto produto = produtoDao.find(id);
+		model.addAttribute("produto", produto);
+		
+		return "produtos/detalhe";
 	}
 }
