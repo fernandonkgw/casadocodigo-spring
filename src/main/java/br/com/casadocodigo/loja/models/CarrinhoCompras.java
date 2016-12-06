@@ -3,6 +3,9 @@ package br.com.casadocodigo.loja.models;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CarrinhoCompras {
 
 	private Map<CarrinhoItem, Integer> itens = new LinkedHashMap<CarrinhoItem, Integer>();
