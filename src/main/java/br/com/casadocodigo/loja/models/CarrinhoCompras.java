@@ -20,4 +20,8 @@ public class CarrinhoCompras {
 		}
 		return itens.get(item);
 	}
+	
+	public Integer getQuantidade() {
+		return itens.values().stream().reduce(0, (proximo, acumulador) -> (proximo + acumulador));
+	}
 }
