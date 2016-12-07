@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 </head>
 <body>
 
-  <header id="layout-header">
+	<header id="layout-header">
 		<div class="clearfix container">
 			<a href="/" id="logo">
 			</a>
@@ -49,7 +50,7 @@
 				<nav id="main-nav">
 					
 					<ul class="clearfix">
-						<li><a href="/cart" rel="nofollow">Carrinho</a></li>
+						<li><a href="${s:mvcUrl('CCC#itens').build() }" rel="nofollow">Carrinho ( ${carrinhoCompras.quantidade})</a></li>
 
 						<li><a href="/pages/sobre-a-casa-do-codigo" rel="nofollow">Sobre Nós</a></li>
 
@@ -79,36 +80,38 @@
 	</nav>
 	
 	<section class="container middle">
-		  <h2 id="cart-title">Seu carrinho de compras</h2>
+		<h2 id="cart-title">Seu carrinho de compras</h2>
 		  
-		  
-		    <table id="cart-table">
-		      <colgroup>
-		        <col class="item-col"/>
-		        <col class="item-price-col"/>
-		        <col class="item-quantity-col"/>
-		        <col class="line-price-col"/>
-		        <col class="delete-col"/>
-		      </colgroup>
-		      <thead>
-		        <tr>
-		          <th class="cart-img-col"></th>
-		          <th width="65%">Item</th>
-		          <th width="10%">Preço</th>
-		          <th width="10%">Quantidade</th>
-		          <th width="10%">Total</th>
-		          <th width="5%"></th>
-		        </tr>
-		      </thead>
-		      <tbody>
-			      <tr>
-			          <td class="cart-img-col"><img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" width="71px" height="100px"/></td><td class="item-title">TÍTULO DO LIVRO AQUI</td>
-			          <td class="numeric-cell">R$ 59,90</td>
-			          <td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="updates_4082273665" name="updates[4082273665]" value="1"/></td>
-			          <td class="numeric-cell">R$ 59,90</td>
-			          <td class="remove-item"><a href="/cart/change?218748921802387812&quantity=0"><img src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" /></a></td>
-			      </tr>
-		      </tbody>
+			<table id="cart-table">
+				<colgroup>
+			        <col class="item-col"/>
+			        <col class="item-price-col"/>
+			        <col class="item-quantity-col"/>
+			        <col class="line-price-col"/>
+			        <col class="delete-col"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th class="cart-img-col"></th>
+						<th width="65%">Item</th>
+						<th width="10%">Preço</th>
+						<th width="10%">Quantidade</th>
+						<th width="10%">Total</th>
+						<th width="5%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${carrinhoCompras.itens}" var="item">
+						<tr>
+							<td class="cart-img-col"><img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" width="71px" height="100px"/></td>
+							<td class="item-title">TÍTULO DO LIVRO AQUI</td>
+							<td class="numeric-cell">R$ 59,90</td>
+							<td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="updates_4082273665" name="updates[4082273665]" value="1"/></td>
+							<td class="numeric-cell">R$ 59,90</td>
+							<td class="remove-item"><a href="/cart/change?218748921802387812&quantity=0"><img src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" /></a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			      <tfoot>
 			        <tr>
 			          <td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra" /></td>
