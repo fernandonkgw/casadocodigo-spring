@@ -48,8 +48,6 @@ public class ProdutosController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String gravar(MultipartFile sumario,  @Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
 		
-		System.out.println(sumario.getOriginalFilename());
-		
 		if (result.hasErrors()) {
 			return form(produto, model);
 		}
