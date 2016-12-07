@@ -136,7 +136,7 @@
 		      </li>          
 		  </ul>
 		  
-		  <h2><a href="http://www.casadocodigo.com.br">Veja todos os livros que publicamos!</a></h2>
+		  <h2><a href='<c:url value="/produtos" />'> Veja todos os livros que publicamos!</a></h2>
 		</section> 
 
 		
