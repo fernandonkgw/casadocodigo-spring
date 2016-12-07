@@ -31,6 +31,13 @@ public class Produto {
 
 	private String sumarioPath;
 
+	public Produto() {
+	}
+
+	public Produto(int id) {
+		this.id = id;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -117,9 +124,11 @@ public class Produto {
 	}
 
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
-		// filtrar de todos os preços, o preco escolhido e logo após encontra-lo retornar seu valor através do método getvalor()
-		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();
+		// filtrar de todos os preços, o preco escolhido e logo após encontra-lo
+		// retornar seu valor através do método getvalor()
+		return precos.stream()
+				.filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst()
+				.get().getValor();
 	}
 
-	
 }
