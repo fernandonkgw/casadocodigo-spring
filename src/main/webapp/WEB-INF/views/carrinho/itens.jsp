@@ -104,22 +104,28 @@
 					<c:forEach items="${carrinhoCompras.itens}" var="item">
 						<tr>
 							<td class="cart-img-col"><img src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" width="71px" height="100px"/></td>
-							<td class="item-title">TÍTULO DO LIVRO AQUI</td>
-							<td class="numeric-cell">R$ 59,90</td>
-							<td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="updates_4082273665" name="updates[4082273665]" value="1"/></td>
-							<td class="numeric-cell">R$ 59,90</td>
-							<td class="remove-item"><a href="/cart/change?218748921802387812&quantity=0"><img src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" /></a></td>
+							<td class="item-title">${item.produto.titulo}</td>
+							<td class="numeric-cell">${item.preco}</td>
+							<td class="quantity-input-cell"><input type="number" min="0" readonly="readonly" id="quantidade" name="quantidade" value="1"/></td>
+							<td class="numeric-cell">${carrinhoCompras.getTotal(item)}</td>
+							<td class="remove-item">
+								<form action="" method="post">
+									<input type="image" src="${contextPath }resources/imagens/excluir.png" alt="Excluir" title="Excluir" />
+								</form>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
-			      <tfoot>
-			        <tr>
-			          <td colspan="3"><input type="submit" class="checkout" name="checkout" value="Finalizar compra" /></td>
-			          <td class="quantity-input-cell"><input type="submit" class="update-cart" disabled="disabled" name="update" value=""/></td>
-			          <td class="numeric-cell">R$ 59,90</td><td></td>
-			        </tr>
-			      </tfoot>
-		    </table>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<input type="submit" class="checkout" name="checkout" value="Finalizar compra" />
+						</td>
+						<td class="numeric-cell">${carrinhoCompras.total}</td>
+						<td></td>
+					</tr>
+				</tfoot>
+			</table>
 		  
 		  <h2>Você já conhece os outros livros da Casa do Código?</h2>
 		  <ul id="collection" class="related-books">          
