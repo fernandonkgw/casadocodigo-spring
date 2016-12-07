@@ -4,20 +4,20 @@ import java.math.BigDecimal;
 
 public class CarrinhoItem {
 
-	private TipoPreco tipo;
+	private TipoPreco tipoPreco;
 	private Produto produto;
 
-	public CarrinhoItem(TipoPreco tipo, Produto produto) {
-		this.tipo = tipo;
+	public CarrinhoItem(TipoPreco tipoPreco, Produto produto) {
+		this.tipoPreco = tipoPreco;
 		this.produto = produto;
 	}
 
-	public TipoPreco getTipo() {
-		return tipo;
+	public TipoPreco getTipoPreco() {
+		return tipoPreco;
 	}
 
-	public void setTipo(TipoPreco tipo) {
-		this.tipo = tipo;
+	public void setTipoPreco(TipoPreco tipoPreco) {
+		this.tipoPreco = tipoPreco;
 	}
 
 	public Produto getProduto() {
@@ -33,7 +33,7 @@ public class CarrinhoItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((produto == null) ? 0 : produto.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((tipoPreco == null) ? 0 : tipoPreco.hashCode());
 		return result;
 	}
 
@@ -51,13 +51,13 @@ public class CarrinhoItem {
 				return false;
 		} else if (!produto.equals(other.produto))
 			return false;
-		if (tipo != other.tipo)
+		if (tipoPreco != other.tipoPreco)
 			return false;
 		return true;
 	}
 
 	public BigDecimal getPreco() {
-		return produto.precoPara(tipo);
+		return produto.precoPara(tipoPreco);
 	}
 
 	public BigDecimal getTotal(int quantidade) {
