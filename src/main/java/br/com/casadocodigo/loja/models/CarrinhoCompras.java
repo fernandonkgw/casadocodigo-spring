@@ -1,5 +1,6 @@
 package br.com.casadocodigo.loja.models;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -26,5 +27,9 @@ public class CarrinhoCompras {
 	
 	public Integer getQuantidade() {
 		return itens.values().stream().reduce(0, (proximo, acumulador) -> (proximo + acumulador));
+	}
+	
+	public Collection<CarrinhoItem> getItens() {
+		return itens.keySet();
 	}
 }
