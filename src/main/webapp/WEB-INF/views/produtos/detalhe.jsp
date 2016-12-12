@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,39 +70,34 @@
 	</nav>
 
 	<article id="${produto.id}">
-		  <header id="product-highlight" class="clearfix">
-		    <div id="product-overview" class="container">
-		      <img width="280px" height="395px" src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" class="product-featured-image" />
-		      <h1 class="product-title">${produto.titulo}</h1>
-		      <p class="product-author">
-		        <span class="product-author-link">
-		          
-		        </span>
-		      </p>	
+		<header id="product-highlight" class="clearfix">
+			<div id="product-overview" class="container">
+				<img width="280px" height="395px" src="http://cdn.shopify.com/s/files/1/0155/7645/products/css-eficiente-featured_large.png?v=1435245145" class="product-featured-image" />
+				<h1 class="product-title">${produto.titulo}</h1>
+				<p class="product-author">
+					<span class="product-author-link"></span>
+				</p>	
 			
-		    <p class="book-description">${produto.descricao}</p>
-		    </div>
-		  </header>
-	
+				<p class="book-description">${produto.descricao}</p>
+			</div>
+		</header>
 	  
-	  <section class="buy-options clearfix">  
-	  <form action='<c:url value="/carrinho/add" />' method="post" class="container">
-	  	<input type="hidden" value="${produto.id}" name="produtoId" id="produtoId"/>
-	    <ul id="variants" class="clearfix">
-	    	<c:forEach items="${produto.precos}" var="preco">
-	    	  <li class="buy-option">
-	            <input type="radio" name="tipo" class="variant-radio" id="tipo" value="${preco.tipo}"  checked="checked"  />
-	            <label  class="variant-label">
-	              ${preco.tipo}
-	            </label>
-	            <small class="compare-at-price">R$ 39,90</small>
-	            <p class="variant-price">${preco.valor}</p>
-	          </li>
-			</c:forEach>
-	    </ul>
-	    <button type="submit" class="submit-image icon-basket-alt" alt="Compre Agora" title="Compre Agora ${produto.titulo}"></button>
-	    
-	  </form>
+	<section class="buy-options clearfix">  
+		<form:form servletRelativeAction="/carrinho/add" method="post" cssClass="container">
+	  		<input type="hidden" value="${produto.id}" name="produtoId" id="produtoId"/>
+			<ul id="variants" class="clearfix">
+				<c:forEach items="${produto.precos}" var="preco">
+					<li class="buy-option">
+						<input type="radio" name="tipo" class="variant-radio" id="tipo" value="${preco.tipo}" checked="checked"  />
+						<label class="variant-label">${preco.tipo}</label>
+						<small class="compare-at-price">R$ 39,90</small>
+						<p class="variant-price">${preco.valor}</p>
+					</li>
+				</c:forEach>
+			</ul>
+			<button type="submit" class="submit-image icon-basket-alt" alt="Compre Agora" title="Compre Agora ${produto.titulo}"></button>
+
+		</form:form>
 	  
 	</section>
 	  
