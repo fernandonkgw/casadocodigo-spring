@@ -1,6 +1,5 @@
 package br.com.casadocodigo.loja.controllers;
 
-import java.awt.datatransfer.Clipboard;
 import java.util.concurrent.Callable;
 
 import org.springframework.beans.factory.annotation.Autowired;
