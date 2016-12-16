@@ -61,7 +61,7 @@ public class ProdutosController {
 		
 		redirectAttributes.addFlashAttribute("sucesso","Produto cadastrado com sucesso!");
 
-		return "redirect:produtos"; // redirecionados para requestMapping de produtos que chama o metodo listar(Model model)
+		return "redirect:/produtos"; // redirecionados para requestMapping de produtos que chama o metodo listar(Model model)
 	}
 
 	@RequestMapping(method=RequestMethod.GET)
