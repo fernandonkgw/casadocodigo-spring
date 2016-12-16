@@ -43,7 +43,7 @@ public class HomeController {
 	public String urlMagicaMaluca() {
 		Usuario usuario = new Usuario(); 
 	    usuario.setNome("Admin");
-	    usuario.setEmail("fernandonkgw@gmail.com.br");
+	    usuario.setEmail("admin@gmail.com");
 	    usuario.setSenha("$2a$10$lt7pS7Kxxe5JfP.vjLNSyOXP11eHgh7RoPxo5fvvbMCZkCUss2DGu");
 	    usuario.setRoles(Arrays.asList(new Role("ROLE_ADMIN")));
 	    
